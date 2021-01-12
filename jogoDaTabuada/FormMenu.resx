@@ -127,7 +127,7 @@
 A partir disso, o programa irá sortear dois números aleatórios da tabuada (do 1 até o 10) para que o jogador tente acertar. Se o resultado estiver correto, será somado +1 ponto para o usuário. Caso contrário, será somado +1 ponto para o computador.
 
 O game também possuí Pulos nos quais podem ser utilizados para pular um determinado cálculo, sem incrementar pontos para os jogadores. Dependendo da dificuldade do game, os Pulos se tornam mais difíceis de serem coletados.
-No nível fácil, para conseguir um Pulo, será necessário responder no mínimo 2 perguntas corretas; no nível moderado, serão 3 perguntas; no nível difícil, serão 4 perguntas corretas.</value>
+No nível fácil, para conseguir um Pulo, será necessário responder no mínimo 2 perguntas corretas seguidas; no nível moderado, serão 3 perguntas seguidas; no nível difícil, serão 4 perguntas corretas seguidas.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

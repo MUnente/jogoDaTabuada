@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace jogoDaTabuada {
-    public partial class frmMenu : Form {
-        public frmMenu() {
+    public partial class FormMenu : Form {
+        public FormMenu() {
             InitializeComponent();
         }
 
@@ -36,8 +36,15 @@ namespace jogoDaTabuada {
             if (rdbEasy.Checked == false && rdbMedium.Checked == false && rdbHard.Checked == false)
                 MessageBox.Show("Por favor, amigão, selecione um dos níveis de dificuldade para começar a partida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else {
-                frmGame game = new frmGame();
-                game.Show();
+                string difficulty;
+                if (rdbEasy.Checked)
+                    difficulty = "easy";
+                else if (rdbMedium.Checked)
+                    difficulty = "medium";
+                else
+                    difficulty = "hard";
+                FormGame frmGame = new FormGame(difficulty);
+                frmGame.Show();
                 this.Hide();
             }
         }

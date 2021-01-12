@@ -1,5 +1,5 @@
 ﻿namespace jogoDaTabuada {
-    partial class frmMenu {
+    partial class FormMenu {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
             this.lblPlay = new System.Windows.Forms.Label();
             this.lblHowToPlay = new System.Windows.Forms.Label();
             this.pnlMenu = new System.Windows.Forms.Panel();
@@ -250,7 +250,7 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Nível de dificuldade";
             // 
-            // frmMenu
+            // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -262,7 +262,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "frmMenu";
+            this.Name = "FormMenu";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Jogo da Tabuada";
