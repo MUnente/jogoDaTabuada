@@ -12,37 +12,16 @@ namespace jogoDaTabuada {
     public partial class FormGame : Form {
         public FormGame(string diff) {
             InitializeComponent();
+            txtProduct.MaxLength = 3;
             frmLoad(diff);
+            pnlReadyFocus();
         }
 
         private void frmLoad(string d) {
-            pnlReadyFocus();
             Game game = Game.getInstance();
             game.setDifficulty(d);
-            game.setTime(changeTimer(d));
+            game.setDiffTimer(changeTimer(d));
             game.setMinimalJumps(changeMinJumps(d));
-        }
-
-        private int changeTimer(string d) {
-            int timer;
-            if (d == "easy")
-                timer = 15;
-            else if (d == "medium")
-                timer = 10;
-            else
-                timer = 5;
-            return timer;
-        }
-
-        private short changeMinJumps(string d) {
-            short minJumps;
-            if (d == "easy")
-                minJumps = 2;
-            else if (d == "medium")
-                minJumps = 3;
-            else
-                minJumps = 4;
-            return minJumps;
         }
 
         private void pnlReadyFocus() {
@@ -53,13 +32,47 @@ namespace jogoDaTabuada {
         }
 
         private void pnlGameFocus() {
+            generateRandom();
+            Game game = Game.getInstance();
+            game.setCountdown(game.getDiffTimer());
+            lblTimer.Text = "Tempo: " + game.getDiffTimer().ToString() + " segundos";
+            lblDifficulty.Text = "Dificuldade: " + game.getDifficulty();
+            lblFactor1.Text = game.getFactor1().ToString();
+            lblFactor2.Text = game.getFactor2().ToString();
             pnlReady.Visible = false;
             pnlScore.Visible = false;
             pnlFinish.Visible = false;
             pnlGame.Visible = true;
+            txtProduct.Text = "0";
+            txtProduct.Focus();
         }
 
-        private void pnlScoreFocus() {
+        private void pnlScoreFocus(char op) {
+            if (op == 'v') {
+                Player p1 = Player.getInstance();
+                Game game = Game.getInstance();
+                if (result() == true) {
+                    lblMsg.Text = "Parabéns, você acertou!";
+                    lblMultiResult.Text = "Resultado: " + (game.getFactor1() * game.getFactor2()).ToString();
+                    try {
+                        //Image myImage = 
+                        //picResult.Image = ;
+                    }
+                    catch (Exception ex) {
+                        MessageBox.Show("Erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        
+                    }                    
+                    
+                }
+                else {
+                    lblMsg.Text = "Poxa, você não acertou!";
+                    lblMultiResult.Text = "Resultado: " + (game.getFactor1() * game.getFactor2()).ToString();
+                }
+            }
+            else {
+                lblMsg.Text = "Poxa, você deixou o tempo estourar!";
+                lblMultiResult.Text = "";
+            }
             pnlReady.Visible = false;
             pnlFinish.Visible = false;
             pnlGame.Visible = false;
@@ -73,38 +86,87 @@ namespace jogoDaTabuada {
             pnlFinish.Visible = true;
         }
 
-        private void startMatch_Click(object sender, EventArgs e) {
-            pnlGameFocus();
-            
+        private int changeTimer(string d) {
+            int timer;
+            if (d == "Fácil")
+                timer = 15;
+            else if (d == "Moderado")
+                timer = 10;
+            else
+                timer = 5;
+            return timer;
         }
 
-        private void continueGame_Click(object sender, EventArgs e) {
+        private short changeMinJumps(string d) {
+            short minJumps;
+            if (d == "Fácil")
+                minJumps = 2;
+            else if (d == "Moderado")
+                minJumps = 3;
+            else
+                minJumps = 4;
+            return minJumps;
+        }
+
+        private bool result() {
+            bool isCorrect = false;
+            Game game = Game.getInstance();
+            Player p1 = Player.getInstance();
+            if (game.getFactor1() * game.getFactor2() == p1.getProduct())
+                isCorrect = true;
+            return isCorrect;
+        }
+
+        private void generateRandom() {
+            Game game = Game.getInstance();
+            Random random = new Random();
+            game.setFactor1(random.Next(1, 10));
+            game.setFactor2(random.Next(1, 10));
+        }
+
+        private void timer1_Tick(object sender, EventArgs e) {
+            Game game = Game.getInstance();
+            game.setCountdown(game.getCountdown() - 1);
+            if (game.getCountdown() == 0) {
+                timer1.Stop();
+                pnlScoreFocus('t');
+            }
+            lblTimer.Text = "Tempo: " + game.getCountdown() + " segundos";
+        }
+
+        private void round_Click(object sender, EventArgs e) {
             pnlGameFocus();
+            timer1.Enabled = true;
+            timer1.Start();
         }
 
         private void verify_Click(object sender, EventArgs e) {
-            // Finalizar round e verificar se o usuário acertou (pnlScore)
+            Player player1 = Player.getInstance();
+            player1.setProduct(Convert.ToInt32(txtProduct.Text));
+            pnlScoreFocus('v');
         }
 
         private void jump_Click(object sender, EventArgs e) {
-            // Pular questão
+            
         }
 
         private void finishMatch_Click(object sender, EventArgs e) {
-            // Voltar para o pnlStartFinish
+            
         }
 
         private void backMenu_Click(object sender, EventArgs e) {
-            this.Close();
+            Game.finishInstance();
+            Player.finishInstance();
             FormMenu menu = new FormMenu();
             menu.Show();
+            this.Close();
         }
 
         private void lblAquaRed_MouseMove(object sender, MouseEventArgs e) {
             Label someLabel = sender as Label;
             //PictureBox somePic = sender as PictureBox;
             if (someLabel != null) {
-                if (someLabel.Name == "lblFinish" || someLabel.Name == "lblBackMenu" || someLabel.Name == "lblBackMenu1")
+                if (someLabel.Name == "lblFinish" || someLabel.Name == "lblBackMenu" || someLabel.Name == "lblBackMenu1" || someLabel.Name == "lblFinishMatch")
                     someLabel.ForeColor = System.Drawing.Color.Red;
                 else
                     someLabel.ForeColor = System.Drawing.Color.Aqua;

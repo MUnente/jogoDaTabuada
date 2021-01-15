@@ -203,6 +203,7 @@
             // rdbHard
             // 
             this.rdbHard.AutoSize = true;
+            this.rdbHard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbHard.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbHard.ForeColor = System.Drawing.Color.White;
             this.rdbHard.Location = new System.Drawing.Point(106, 283);
@@ -216,6 +217,7 @@
             // rdbMedium
             // 
             this.rdbMedium.AutoSize = true;
+            this.rdbMedium.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbMedium.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbMedium.ForeColor = System.Drawing.Color.White;
             this.rdbMedium.Location = new System.Drawing.Point(106, 240);
@@ -229,6 +231,7 @@
             // rdbEasy
             // 
             this.rdbEasy.AutoSize = true;
+            this.rdbEasy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbEasy.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbEasy.ForeColor = System.Drawing.Color.White;
             this.rdbEasy.Location = new System.Drawing.Point(106, 197);

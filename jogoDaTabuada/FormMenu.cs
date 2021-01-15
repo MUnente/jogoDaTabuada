@@ -38,11 +38,11 @@ namespace jogoDaTabuada {
             else {
                 string difficulty;
                 if (rdbEasy.Checked)
-                    difficulty = "easy";
+                    difficulty = "Fácil";
                 else if (rdbMedium.Checked)
-                    difficulty = "medium";
+                    difficulty = "Moderado";
                 else
-                    difficulty = "hard";
+                    difficulty = "Difícil";
                 FormGame frmGame = new FormGame(difficulty);
                 frmGame.Show();
                 this.Hide();
