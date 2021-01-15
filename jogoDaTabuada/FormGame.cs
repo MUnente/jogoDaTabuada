@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace jogoDaTabuada {
     public partial class FormGame : Form {
+        private Player player_1 = new Player();
+        private Player player_pc = new Player();
+        private Game game = new Game();
+        
         public FormGame(string diff) {
             InitializeComponent();
             txtProduct.MaxLength = 3;
@@ -18,7 +22,6 @@ namespace jogoDaTabuada {
         }
 
         private void frmLoad(string d) {
-            Game game = Game.getInstance();
             game.setDifficulty(d);
             game.setDiffTimer(changeTimer(d));
             game.setMinimalJumps(changeMinJumps(d));
@@ -33,7 +36,6 @@ namespace jogoDaTabuada {
 
         private void pnlGameFocus() {
             generateRandom();
-            Game game = Game.getInstance();
             game.setCountdown(game.getDiffTimer());
             lblTimer.Text = "Tempo: " + game.getDiffTimer().ToString() + " segundos";
             lblDifficulty.Text = "Dificuldade: " + game.getDifficulty();
@@ -49,30 +51,48 @@ namespace jogoDaTabuada {
 
         private void pnlScoreFocus(char op) {
             if (op == 'v') {
-                Player p1 = Player.getInstance();
-                Game game = Game.getInstance();
                 if (result() == true) {
                     lblMsg.Text = "Parabéns, você acertou!";
                     lblMultiResult.Text = "Resultado: " + (game.getFactor1() * game.getFactor2()).ToString();
                     try {
-                        //Image myImage = 
-                        //picResult.Image = ;
+                        picResult.Image = jogoDaTabuada.Properties.Resources.partying_emoji;
                     }
                     catch (Exception ex) {
                         MessageBox.Show("Erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        
-                    }                    
-                    
+                    }
+                    lblMsg.Location = new Point(110, 12);
+                    picResult.Location = new Point(458, 23);
+                    player_1.setScore(player_1.getScore() + 1);
                 }
                 else {
                     lblMsg.Text = "Poxa, você não acertou!";
                     lblMultiResult.Text = "Resultado: " + (game.getFactor1() * game.getFactor2()).ToString();
+                    try {
+                        picResult.Image = jogoDaTabuada.Properties.Resources.sad_emoji;
+                    }
+                    catch (Exception ex) {
+                        MessageBox.Show("Erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    lblMsg.Location = new Point(110, 12);
+                    picResult.Location = new Point(458, 23);
+                    player_pc.setScore(player_pc.getScore() + 1);
                 }
             }
             else {
                 lblMsg.Text = "Poxa, você deixou o tempo estourar!";
-                lblMultiResult.Text = "";
+                lblMultiResult.Text = "Resultado: " + (game.getFactor1() * game.getFactor2()).ToString();
+                try {
+                    picResult.Image = jogoDaTabuada.Properties.Resources.sad_emoji;
+                }
+                catch (Exception ex) {
+                    MessageBox.Show("Erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                lblMsg.Location = new Point(24, 12);
+                picResult.Location = new Point(542, 23);
+                player_pc.setScore(player_pc.getScore() + 1);
             }
+            lblScoreMachine.Text = player_pc.getScore().ToString();
+            lblScorePlayer.Text = player_1.getScore().ToString();
             pnlReady.Visible = false;
             pnlFinish.Visible = false;
             pnlGame.Visible = false;
@@ -110,22 +130,18 @@ namespace jogoDaTabuada {
 
         private bool result() {
             bool isCorrect = false;
-            Game game = Game.getInstance();
-            Player p1 = Player.getInstance();
-            if (game.getFactor1() * game.getFactor2() == p1.getProduct())
+            if (game.getFactor1() * game.getFactor2() == player_1.getProduct())
                 isCorrect = true;
             return isCorrect;
         }
 
         private void generateRandom() {
-            Game game = Game.getInstance();
             Random random = new Random();
             game.setFactor1(random.Next(1, 10));
             game.setFactor2(random.Next(1, 10));
         }
 
         private void timer1_Tick(object sender, EventArgs e) {
-            Game game = Game.getInstance();
             game.setCountdown(game.getCountdown() - 1);
             if (game.getCountdown() == 0) {
                 timer1.Stop();
@@ -141,8 +157,8 @@ namespace jogoDaTabuada {
         }
 
         private void verify_Click(object sender, EventArgs e) {
-            Player player1 = Player.getInstance();
-            player1.setProduct(Convert.ToInt32(txtProduct.Text));
+            player_1.setProduct(Convert.ToInt32(txtProduct.Text));
+            timer1.Stop();
             pnlScoreFocus('v');
         }
 
@@ -155,8 +171,6 @@ namespace jogoDaTabuada {
         }
 
         private void backMenu_Click(object sender, EventArgs e) {
-            Game.finishInstance();
-            Player.finishInstance();
             FormMenu menu = new FormMenu();
             menu.Show();
             this.Close();

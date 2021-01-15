@@ -12,22 +12,6 @@ namespace jogoDaTabuada {
         private short minimalJumps;
         private int factor1;
         private int factor2;
-        private static Game game;
-
-        // Singleton Design Pattern
-        private Game() {
-        }
-
-        public static Game getInstance() {
-            if (game == null)
-                game = new Game();
-            return game;
-        }
-
-        public static Game finishInstance() {
-            game = null;
-            return game;
-        }
 
         public string getDifficulty() {
             return difficulty;

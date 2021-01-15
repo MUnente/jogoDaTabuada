@@ -7,25 +7,9 @@ using System.Threading.Tasks;
 namespace jogoDaTabuada {
     public class Player {
         private int product;
-        private int score;
+        private int score = 0;
         private int jump;
         private int jumpsControl;
-        private static Player player;
-
-        // Singleton Design Pattern
-        private Player() {
-        }
-
-        public static Player getInstance() {
-            if (player == null)
-                player = new Player();
-            return player;
-        }
-
-        public static Player finishInstance() {
-            player = null;
-            return player;
-        }
 
         public int getProduct() {
             return product;

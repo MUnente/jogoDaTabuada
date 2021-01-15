@@ -154,7 +154,7 @@
             // picJump
             // 
             this.picJump.Cursor = System.Windows.Forms.Cursors.Default;
-            this.picJump.Image = ((System.Drawing.Image)(resources.GetObject("picJump.Image")));
+            this.picJump.Image = global::jogoDaTabuada.Properties.Resources.runner;
             this.picJump.Location = new System.Drawing.Point(718, 454);
             this.picJump.Name = "picJump";
             this.picJump.Size = new System.Drawing.Size(34, 25);
@@ -223,7 +223,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::jogoDaTabuada.Properties.Resources.thinking_emoji;
             this.pictureBox1.Location = new System.Drawing.Point(580, 31);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(47, 42);
@@ -263,6 +263,7 @@
             // 
             // picResult
             // 
+            this.picResult.Cursor = System.Windows.Forms.Cursors.Default;
             this.picResult.Location = new System.Drawing.Point(383, 23);
             this.picResult.Name = "picResult";
             this.picResult.Size = new System.Drawing.Size(34, 30);
@@ -273,7 +274,7 @@
             // lblMultiResult
             // 
             this.lblMultiResult.AutoSize = true;
-            this.lblMultiResult.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMultiResult.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblMultiResult.Font = new System.Drawing.Font("Segoe Print", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMultiResult.ForeColor = System.Drawing.Color.White;
             this.lblMultiResult.Location = new System.Drawing.Point(232, 59);
@@ -285,7 +286,7 @@
             // lblMsg
             // 
             this.lblMsg.AutoSize = true;
-            this.lblMsg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMsg.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblMsg.Font = new System.Drawing.Font("Segoe Print", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMsg.ForeColor = System.Drawing.Color.White;
             this.lblMsg.Location = new System.Drawing.Point(218, 12);
@@ -296,7 +297,7 @@
             // 
             // lblScoreMachine
             // 
-            this.lblScoreMachine.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblScoreMachine.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblScoreMachine.Font = new System.Drawing.Font("Segoe Print", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScoreMachine.ForeColor = System.Drawing.Color.White;
             this.lblScoreMachine.Location = new System.Drawing.Point(378, 105);
@@ -308,7 +309,7 @@
             // 
             // lblScorePlayer
             // 
-            this.lblScorePlayer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblScorePlayer.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblScorePlayer.Font = new System.Drawing.Font("Segoe Print", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScorePlayer.ForeColor = System.Drawing.Color.White;
             this.lblScorePlayer.Location = new System.Drawing.Point(149, 105);
@@ -350,7 +351,7 @@
             // 
             // label1
             // 
-            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
             this.label1.Font = new System.Drawing.Font("Segoe Print", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(314, 197);
@@ -362,7 +363,7 @@
             // 
             // lblPlay
             // 
-            this.lblPlay.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblPlay.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblPlay.Font = new System.Drawing.Font("Segoe Print", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlay.ForeColor = System.Drawing.Color.White;
             this.lblPlay.Location = new System.Drawing.Point(74, 197);
@@ -509,7 +510,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Image = global::jogoDaTabuada.Properties.Resources.nerd_emoji;
             this.pictureBox2.Location = new System.Drawing.Point(576, 81);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(64, 51);
