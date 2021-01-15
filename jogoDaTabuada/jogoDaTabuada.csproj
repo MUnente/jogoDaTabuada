@@ -7,8 +7,8 @@
     <ProjectGuid>{6F6FB7F2-EF74-4CD9-BEC3-C44B28B20518}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>jogoDaTabuada</RootNamespace>
-    <AssemblyName>jogoDaTabuada</AssemblyName>
+    <RootNamespace>JogoDaTabuada</RootNamespace>
+    <AssemblyName>JogoDaTabuada</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

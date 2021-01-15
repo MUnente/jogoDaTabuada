@@ -1,4 +1,4 @@
-﻿namespace jogoDaTabuada {
+﻿namespace JogoDaTabuada {
     partial class FormMenu {
         /// <summary>
         /// Required designer variable.

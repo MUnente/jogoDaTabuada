@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace jogoDaTabuada {
+namespace JogoDaTabuada {
     public partial class FormGame : Form {
         private Player player_1 = new Player();
         private Player player_pc = new Player();
@@ -55,7 +55,7 @@ namespace jogoDaTabuada {
                     lblMsg.Text = "Parabéns, você acertou!";
                     lblMultiResult.Text = "Resultado: " + (game.getFactor1() * game.getFactor2()).ToString();
                     try {
-                        picResult.Image = jogoDaTabuada.Properties.Resources.partying_emoji;
+                        picResult.Image = JogoDaTabuada.Properties.Resources.partying_emoji;
                     }
                     catch (Exception ex) {
                         MessageBox.Show("Erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -68,7 +68,7 @@ namespace jogoDaTabuada {
                     lblMsg.Text = "Poxa, você não acertou!";
                     lblMultiResult.Text = "Resultado: " + (game.getFactor1() * game.getFactor2()).ToString();
                     try {
-                        picResult.Image = jogoDaTabuada.Properties.Resources.sad_emoji;
+                        picResult.Image = JogoDaTabuada.Properties.Resources.sad_emoji;
                     }
                     catch (Exception ex) {
                         MessageBox.Show("Erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -82,7 +82,7 @@ namespace jogoDaTabuada {
                 lblMsg.Text = "Poxa, você deixou o tempo estourar!";
                 lblMultiResult.Text = "Resultado: " + (game.getFactor1() * game.getFactor2()).ToString();
                 try {
-                    picResult.Image = jogoDaTabuada.Properties.Resources.sad_emoji;
+                    picResult.Image = JogoDaTabuada.Properties.Resources.sad_emoji;
                 }
                 catch (Exception ex) {
                     MessageBox.Show("Erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);

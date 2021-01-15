@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace jogoDaTabuada {
+namespace JogoDaTabuada {
     public partial class FormMenu : Form {
         public FormMenu() {
             InitializeComponent();

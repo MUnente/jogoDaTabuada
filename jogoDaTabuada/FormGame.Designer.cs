@@ -1,4 +1,4 @@
-﻿namespace jogoDaTabuada {
+﻿namespace JogoDaTabuada {
     partial class FormGame {
         /// <summary>
         /// Required designer variable.
@@ -154,7 +154,7 @@
             // picJump
             // 
             this.picJump.Cursor = System.Windows.Forms.Cursors.Default;
-            this.picJump.Image = global::jogoDaTabuada.Properties.Resources.runner;
+            this.picJump.Image = global::JogoDaTabuada.Properties.Resources.runner;
             this.picJump.Location = new System.Drawing.Point(718, 454);
             this.picJump.Name = "picJump";
             this.picJump.Size = new System.Drawing.Size(34, 25);
@@ -223,7 +223,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::jogoDaTabuada.Properties.Resources.thinking_emoji;
+            this.pictureBox1.Image = global::JogoDaTabuada.Properties.Resources.thinking_emoji;
             this.pictureBox1.Location = new System.Drawing.Point(580, 31);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(47, 42);
@@ -510,7 +510,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::jogoDaTabuada.Properties.Resources.nerd_emoji;
+            this.pictureBox2.Image = global::JogoDaTabuada.Properties.Resources.nerd_emoji;
             this.pictureBox2.Location = new System.Drawing.Point(576, 81);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(64, 51);

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace jogoDaTabuada {
+namespace JogoDaTabuada {
     public class Player {
         private int product;
         private int score = 0;
