@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace JogoDaTabuada {
     public class Player {
         private int product;
-        private int score = 0;
+        private int score;
         private int jump;
         private int jumpsControl;
 

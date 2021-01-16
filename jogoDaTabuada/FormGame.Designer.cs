@@ -54,14 +54,14 @@
             this.lblScoreMachine1 = new System.Windows.Forms.Label();
             this.lblScorePlayer1 = new System.Windows.Forms.Label();
             this.lblBackMenu1 = new System.Windows.Forms.Label();
-            this.lblStartGame1 = new System.Windows.Forms.Label();
+            this.lblNewMatch = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.pnlReady = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblBackMenu = new System.Windows.Forms.Label();
-            this.lblStartGame = new System.Windows.Forms.Label();
+            this.lblStartRound = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picJump)).BeginInit();
@@ -150,6 +150,7 @@
             this.txtProduct.TabIndex = 0;
             this.txtProduct.Text = "0";
             this.txtProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtProduct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.verifyWithEnter);
             // 
             // picJump
             // 
@@ -176,7 +177,7 @@
             this.lblJump.TabIndex = 6;
             this.lblJump.Text = "Pular Questão";
             this.lblJump.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblJump.Click += new System.EventHandler(this.jump_Click);
+            this.lblJump.Click += new System.EventHandler(this.lblJump_Click);
             this.lblJump.MouseLeave += new System.EventHandler(this.lblWhite_MouseLeave);
             this.lblJump.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblAquaRed_MouseMove);
             // 
@@ -216,7 +217,7 @@
             this.lblVerify.TabIndex = 3;
             this.lblVerify.Text = "Verificar";
             this.lblVerify.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblVerify.Click += new System.EventHandler(this.verify_Click);
+            this.lblVerify.Click += new System.EventHandler(this.lblVerify_Click);
             this.lblVerify.MouseLeave += new System.EventHandler(this.lblWhite_MouseLeave);
             this.lblVerify.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblAquaRed_MouseMove);
             // 
@@ -330,7 +331,7 @@
             this.lblFinishMatch.Size = new System.Drawing.Size(219, 37);
             this.lblFinishMatch.TabIndex = 7;
             this.lblFinishMatch.Text = "Encerrar a partida";
-            this.lblFinishMatch.Click += new System.EventHandler(this.finishMatch_Click);
+            this.lblFinishMatch.Click += new System.EventHandler(this.lblFinishMatch_Click);
             this.lblFinishMatch.MouseLeave += new System.EventHandler(this.lblWhite_MouseLeave);
             this.lblFinishMatch.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblAquaRed_MouseMove);
             // 
@@ -381,7 +382,7 @@
             this.pnlFinish.Controls.Add(this.lblScoreMachine1);
             this.pnlFinish.Controls.Add(this.lblScorePlayer1);
             this.pnlFinish.Controls.Add(this.lblBackMenu1);
-            this.pnlFinish.Controls.Add(this.lblStartGame1);
+            this.pnlFinish.Controls.Add(this.lblNewMatch);
             this.pnlFinish.Controls.Add(this.label14);
             this.pnlFinish.Controls.Add(this.label15);
             this.pnlFinish.ForeColor = System.Drawing.SystemColors.Control;
@@ -455,20 +456,20 @@
             this.lblBackMenu1.MouseLeave += new System.EventHandler(this.lblWhite_MouseLeave);
             this.lblBackMenu1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblAquaRed_MouseMove);
             // 
-            // lblStartGame1
+            // lblNewMatch
             // 
-            this.lblStartGame1.AutoSize = true;
-            this.lblStartGame1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblStartGame1.Font = new System.Drawing.Font("Segoe Print", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartGame1.ForeColor = System.Drawing.Color.White;
-            this.lblStartGame1.Location = new System.Drawing.Point(166, 303);
-            this.lblStartGame1.Name = "lblStartGame1";
-            this.lblStartGame1.Size = new System.Drawing.Size(275, 65);
-            this.lblStartGame1.TabIndex = 6;
-            this.lblStartGame1.Text = "Nova partida";
-            this.lblStartGame1.Click += new System.EventHandler(this.round_Click);
-            this.lblStartGame1.MouseLeave += new System.EventHandler(this.lblWhite_MouseLeave);
-            this.lblStartGame1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblAquaRed_MouseMove);
+            this.lblNewMatch.AutoSize = true;
+            this.lblNewMatch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblNewMatch.Font = new System.Drawing.Font("Segoe Print", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNewMatch.ForeColor = System.Drawing.Color.White;
+            this.lblNewMatch.Location = new System.Drawing.Point(166, 303);
+            this.lblNewMatch.Name = "lblNewMatch";
+            this.lblNewMatch.Size = new System.Drawing.Size(275, 65);
+            this.lblNewMatch.TabIndex = 6;
+            this.lblNewMatch.Text = "Nova partida";
+            this.lblNewMatch.Click += new System.EventHandler(this.lblNewMatch_Click);
+            this.lblNewMatch.MouseLeave += new System.EventHandler(this.lblWhite_MouseLeave);
+            this.lblNewMatch.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblAquaRed_MouseMove);
             // 
             // label14
             // 
@@ -500,7 +501,7 @@
             this.pnlReady.Controls.Add(this.pictureBox2);
             this.pnlReady.Controls.Add(this.label3);
             this.pnlReady.Controls.Add(this.lblBackMenu);
-            this.pnlReady.Controls.Add(this.lblStartGame);
+            this.pnlReady.Controls.Add(this.lblStartRound);
             this.pnlReady.ForeColor = System.Drawing.SystemColors.Control;
             this.pnlReady.Location = new System.Drawing.Point(30, 26);
             this.pnlReady.Name = "pnlReady";
@@ -545,20 +546,20 @@
             this.lblBackMenu.MouseLeave += new System.EventHandler(this.lblWhite_MouseLeave);
             this.lblBackMenu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblAquaRed_MouseMove);
             // 
-            // lblStartGame
+            // lblStartRound
             // 
-            this.lblStartGame.AutoSize = true;
-            this.lblStartGame.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblStartGame.Font = new System.Drawing.Font("Segoe Print", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartGame.ForeColor = System.Drawing.Color.White;
-            this.lblStartGame.Location = new System.Drawing.Point(232, 197);
-            this.lblStartGame.Name = "lblStartGame";
-            this.lblStartGame.Size = new System.Drawing.Size(246, 85);
-            this.lblStartGame.TabIndex = 6;
-            this.lblStartGame.Text = "Começar";
-            this.lblStartGame.Click += new System.EventHandler(this.round_Click);
-            this.lblStartGame.MouseLeave += new System.EventHandler(this.lblWhite_MouseLeave);
-            this.lblStartGame.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblAquaRed_MouseMove);
+            this.lblStartRound.AutoSize = true;
+            this.lblStartRound.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblStartRound.Font = new System.Drawing.Font("Segoe Print", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStartRound.ForeColor = System.Drawing.Color.White;
+            this.lblStartRound.Location = new System.Drawing.Point(232, 197);
+            this.lblStartRound.Name = "lblStartRound";
+            this.lblStartRound.Size = new System.Drawing.Size(246, 85);
+            this.lblStartRound.TabIndex = 6;
+            this.lblStartRound.Text = "Começar";
+            this.lblStartRound.Click += new System.EventHandler(this.round_Click);
+            this.lblStartRound.MouseLeave += new System.EventHandler(this.lblWhite_MouseLeave);
+            this.lblStartRound.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblAquaRed_MouseMove);
             // 
             // timer1
             // 
@@ -571,10 +572,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
             this.ClientSize = new System.Drawing.Size(770, 496);
-            this.Controls.Add(this.pnlScore);
-            this.Controls.Add(this.pnlGame);
             this.Controls.Add(this.pnlReady);
             this.Controls.Add(this.pnlFinish);
+            this.Controls.Add(this.pnlScore);
+            this.Controls.Add(this.pnlGame);
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -621,7 +622,7 @@
         private System.Windows.Forms.Panel pnlFinish;
         private System.Windows.Forms.Label lblWinner;
         private System.Windows.Forms.Label lblBackMenu1;
-        private System.Windows.Forms.Label lblStartGame1;
+        private System.Windows.Forms.Label lblNewMatch;
         private System.Windows.Forms.Label lblScoreMachine1;
         private System.Windows.Forms.Label lblScorePlayer1;
         private System.Windows.Forms.Label label14;
@@ -629,7 +630,7 @@
         private System.Windows.Forms.Panel pnlReady;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblBackMenu;
-        private System.Windows.Forms.Label lblStartGame;
+        private System.Windows.Forms.Label lblStartRound;
         private System.Windows.Forms.Label lblTotalRounds;
         private System.Windows.Forms.Label lblFactor2;
         private System.Windows.Forms.Label label7;

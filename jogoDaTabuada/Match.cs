@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace JogoDaTabuada {
-    public class Game {
-        private string difficulty;
-        private int diffTimer;
+    public class Match {
+        private string difficulty; // regras da partida
+        private int difficultyTimer; // regras da partida
         private int countdown;
-        private short minimalJumps;
+        private short minimalJumps; // regras da partida
         private int factor1;
         private int factor2;
+        private int rounds;
 
         public string getDifficulty() {
             return difficulty;
@@ -21,12 +22,12 @@ namespace JogoDaTabuada {
             this.difficulty = difficulty;
         }
 
-        public int getDiffTimer() {
-            return diffTimer;
+        public int getDifficultyTimer() {
+            return difficultyTimer;
         }
 
-        public void setDiffTimer(int diffTimer) {
-            this.diffTimer = diffTimer;
+        public void setDifficultyTimer(int diffTimer) {
+            this.difficultyTimer = diffTimer;
         }
 
         public int getCountdown() {
@@ -59,6 +60,14 @@ namespace JogoDaTabuada {
 
         public void setFactor2(int factor2) {
             this.factor2 = factor2;
+        }
+
+        public int getRounds() {
+            return rounds;
+        }
+
+        public void setRounds(int round) {
+            this.rounds = round;
         }
     }
 }
