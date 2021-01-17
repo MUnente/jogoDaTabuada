@@ -572,10 +572,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
             this.ClientSize = new System.Drawing.Size(770, 496);
+            this.Controls.Add(this.pnlGame);
             this.Controls.Add(this.pnlReady);
             this.Controls.Add(this.pnlFinish);
             this.Controls.Add(this.pnlScore);
-            this.Controls.Add(this.pnlGame);
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

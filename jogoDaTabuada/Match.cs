@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace JogoDaTabuada {
     public class Match {
-        private string difficulty; // regras da partida
-        private int difficultyTimer; // regras da partida
+        private string difficulty;
+        private int difficultyTimer;
         private int countdown;
-        private short minimalJumps; // regras da partida
+        private short minimalJumps;
         private int factor1;
         private int factor2;
         private int rounds;

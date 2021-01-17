@@ -32,6 +32,10 @@ namespace JogoDaTabuada {
         // Método de exibição do pnlReady
         private void pnlReadyFocus() {
             startGameData();
+            pnlScore.Enabled = false;
+            pnlFinish.Enabled = false;
+            pnlGame.Enabled = false;
+            pnlReady.Enabled = true;
             pnlScore.Visible = false;
             pnlFinish.Visible = false;
             pnlGame.Visible = false;
@@ -46,6 +50,10 @@ namespace JogoDaTabuada {
             lblDifficulty.Text = "Dificuldade: " + gameMatch.getDifficulty();
             lblFactor1.Text = gameMatch.getFactor1().ToString();
             lblFactor2.Text = gameMatch.getFactor2().ToString();
+            pnlReady.Enabled = false;
+            pnlScore.Enabled = false;
+            pnlFinish.Enabled = false;
+            pnlGame.Enabled = true;
             pnlReady.Visible = false;
             pnlScore.Visible = false;
             pnlFinish.Visible = false;
@@ -102,6 +110,10 @@ namespace JogoDaTabuada {
             lblScoreMachine.Text = player_pc.getScore().ToString();
             lblScorePlayer.Text = player_1.getScore().ToString();
             gameMatch.setRounds(gameMatch.getRounds() + 1);
+            pnlReady.Enabled = false;
+            pnlFinish.Enabled = false;
+            pnlGame.Enabled = false;
+            pnlScore.Enabled = true;
             pnlReady.Visible = false;
             pnlFinish.Visible = false;
             pnlGame.Visible = false;
@@ -115,11 +127,15 @@ namespace JogoDaTabuada {
             else if (player_1.getScore() < player_pc.getScore())
                 lblWinner.Text = "E o ganhador foi: Computador";
             else if (player_1.getScore() == player_pc.getScore())
-                lblWinner.Text = "Houve um empáte técnico";
+                lblWinner.Text = "Houve um empate técnico";
             lblWinner.Location = new Point((pnlFinish.Width - lblWinner.Width)/2,12);
             lblScorePlayer1.Text = player_1.getScore().ToString();
             lblScoreMachine1.Text = player_pc.getScore().ToString();
             lblTotalRounds.Text = "Total de rounds: " + gameMatch.getRounds();
+            pnlReady.Enabled = false;
+            pnlScore.Enabled = false;
+            pnlGame.Enabled = false;
+            pnlFinish.Enabled = true;
             pnlReady.Visible = false;
             pnlScore.Visible = false;
             pnlGame.Visible = false;
@@ -223,6 +239,7 @@ namespace JogoDaTabuada {
                 pnlFinishFocus();
         }
 
+        // Evento de clicar no lblNewMatch
         private void lblNewMatch_Click(object sender, EventArgs e) {
             pnlReadyFocus();
         }
