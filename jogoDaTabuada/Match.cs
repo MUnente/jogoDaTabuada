@@ -9,7 +9,7 @@ namespace JogoDaTabuada {
         private string difficulty;
         private int difficultyTimer;
         private int countdown;
-        private short minimalJumps;
+        private byte minimalJumps;
         private int factor1;
         private int factor2;
         private int rounds;
@@ -42,7 +42,7 @@ namespace JogoDaTabuada {
             return minimalJumps;
         }
 
-        public void setMinimalJumps(short minimalJumps) {
+        public void setMinimalJumps(byte minimalJumps) {
             this.minimalJumps = minimalJumps;
         }
 

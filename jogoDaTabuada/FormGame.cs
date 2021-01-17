@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace JogoDaTabuada {
     public partial class FormGame : Form {
-        // Instanciando os objetos Player, Computador e Game
+        // Instanciando os objetos Player, Computador e Match
         private Player player_1 = new Player();
         private Player player_pc = new Player();
         private Match gameMatch = new Match();
@@ -79,6 +79,7 @@ namespace JogoDaTabuada {
                     lblMsg.Location = new Point(110, 12);
                     picResult.Location = new Point(458, 23);
                     player_1.setScore(player_1.getScore() + 1);
+                    rightAnswController(true);
                 }
                 else {
                     lblMsg.Text = "Poxa, você não acertou!";
@@ -92,6 +93,7 @@ namespace JogoDaTabuada {
                     lblMsg.Location = new Point(110, 12);
                     picResult.Location = new Point(458, 23);
                     player_pc.setScore(player_pc.getScore() + 1);
+                    rightAnswController(false);
                 }
             }
             else {
@@ -106,6 +108,7 @@ namespace JogoDaTabuada {
                 lblMsg.Location = new Point(24, 12);
                 picResult.Location = new Point(542, 23);
                 player_pc.setScore(player_pc.getScore() + 1);
+                rightAnswController(false);
             }
             lblScoreMachine.Text = player_pc.getScore().ToString();
             lblScorePlayer.Text = player_1.getScore().ToString();
@@ -151,7 +154,7 @@ namespace JogoDaTabuada {
             player_1.setProduct(0);
             player_1.setScore(0);
             player_1.setJump(0);
-            player_1.setJumpsControl(0);
+            player_1.setRightAnsw(0);
             player_pc.setScore(0);
         }
 
@@ -168,8 +171,8 @@ namespace JogoDaTabuada {
         }
         
         // Função de alterar o mínimo de pulos de acordo com a dificuldade
-        private short changeMinJumps(string d) {
-            short minJumps;
+        private byte changeMinJumps(string d) {
+            byte minJumps;
             if (d == "Fácil")
                 minJumps = 2;
             else if (d == "Moderado")
@@ -184,6 +187,29 @@ namespace JogoDaTabuada {
             Random random = new Random();
             gameMatch.setFactor1(random.Next(1, 10));
             gameMatch.setFactor2(random.Next(1, 10));
+        }
+
+        // Procedimento que controla o número de respostas certas para adicionar um pulo
+        private void rightAnswController(bool op) {
+            if (op == true) {
+                player_1.setRightAnsw(player_1.getRightAnsw() + 1);
+                if (player_1.getRightAnsw() == gameMatch.getMinimalJumps()) {
+                    player_1.setJump(player_1.getJump() + 1);
+                    player_1.setRightAnsw(0);
+                }
+            }
+            else
+                player_1.setRightAnsw(0);
+        }
+
+        // Função que controla os pulos
+        private bool jumpController() {
+            bool hasJump = false;
+            if (player_1.getJump() >= 1) {
+                hasJump = true;
+                player_1.setJump(player_1.getJump() - 1);
+            }
+            return hasJump;
         }
 
         // Função para verificar o resultado que o jogador digitou
@@ -229,12 +255,15 @@ namespace JogoDaTabuada {
 
         // Evento de clicar no lblJump
         private void lblJump_Click(object sender, EventArgs e) {
-            // TA FALTANDO EUUUU!!!!!
+            if (jumpController())
+                pnlGameFocus();
+            else
+                MessageBox.Show("Você não possui pulos suficientes", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         // Evento de clicar no lblFinishMatch
         private void lblFinishMatch_Click(object sender, EventArgs e) {
-            DialogResult d = MessageBox.Show("Você tem certeza desta ação?", "Você está prestes a encerrar a partida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult d = MessageBox.Show("Você tem certeza desta ação?", "Encerrar a partida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (d.ToString() == "Yes")
                 pnlFinishFocus();
         }

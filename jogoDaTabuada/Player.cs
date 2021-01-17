@@ -9,7 +9,7 @@ namespace JogoDaTabuada {
         private int product;
         private int score;
         private int jump;
-        private int jumpsControl;
+        private int rightAnsw;
 
         public int getProduct() {
             return product;
@@ -35,12 +35,12 @@ namespace JogoDaTabuada {
             this.jump = jump;
         }
 
-        public int getJumpsControl() {
-            return jumpsControl;
+        public int getRightAnsw() {
+            return rightAnsw;
         }
 
-        public void setJumpsControl(int jumpsControl) {
-            this.jumpsControl = jumpsControl;
+        public void setRightAnsw(int rightAnsw) {
+            this.rightAnsw = rightAnsw;
         }
     }
 }
