@@ -10,26 +10,22 @@ using System.Windows.Forms;
 
 namespace JogoDaTabuada {
     public partial class FormGame : Form {
-        // Instanciando os objetos Player, Computador e Match
         private Player player_1 = new Player();
         private Player player_pc = new Player();
-        private Match gameMatch = new Match();
+        private GameMatch gameMatch = new GameMatch();
         
-        // Iniciando o form
         public FormGame(string diff) {
             InitializeComponent();
             gameMatchRules(diff);
             pnlReadyFocus();
         }
 
-        // Procedimento para definir regras da partida
         private void gameMatchRules(string d) {
             gameMatch.setDifficulty(d);
-            gameMatch.setDifficultyTimer(changeTimer(d));
-            gameMatch.setMinimalJumps(changeMinJumps(d));
+            gameMatch.setDiffTimer(changeTimer(d));
+            gameMatch.setMinAnsw(changeMinJumps(d));
         }
 
-        // Método de exibição do pnlReady
         private void pnlReadyFocus() {
             startGameData();
             pnlScore.Enabled = false;
@@ -42,11 +38,10 @@ namespace JogoDaTabuada {
             pnlReady.Visible = true;
         }
 
-        // Método de exibição do pnlGame
         private void pnlGameFocus() {
             generateRandom();
-            gameMatch.setCountdown(gameMatch.getDifficultyTimer());
-            lblTimer.Text = "Tempo: " + gameMatch.getDifficultyTimer().ToString() + " segundos";
+            gameMatch.setCountdown(gameMatch.getDiffTimer());
+            lblTimer.Text = "Tempo: " + gameMatch.getDiffTimer().ToString() + " segundos";
             lblDifficulty.Text = "Dificuldade: " + gameMatch.getDifficulty();
             lblFactor1.Text = gameMatch.getFactor1().ToString();
             lblFactor2.Text = gameMatch.getFactor2().ToString();
@@ -64,7 +59,6 @@ namespace JogoDaTabuada {
             txtProduct.Focus();
         }
 
-        // Método de exibição do pnlScore
         private void pnlScoreFocus(char op) {
             if (op == 'v') {
                 if (verifyResult() == true) {
@@ -123,7 +117,6 @@ namespace JogoDaTabuada {
             pnlScore.Visible = true;
         }
 
-        // Método de exibição do pnlFinish
         private void pnlFinishFocus() {
             if (player_1.getScore() > player_pc.getScore())
                 lblWinner.Text = "E o ganhador foi: Jogador";
@@ -131,7 +124,7 @@ namespace JogoDaTabuada {
                 lblWinner.Text = "E o ganhador foi: Computador";
             else if (player_1.getScore() == player_pc.getScore())
                 lblWinner.Text = "Houve um empate técnico";
-            lblWinner.Location = new Point((pnlFinish.Width - lblWinner.Width)/2,12);
+            lblWinner.Location = new Point((pnlFinish.Width - lblWinner.Width)/2, 12);
             lblScorePlayer1.Text = player_1.getScore().ToString();
             lblScoreMachine1.Text = player_pc.getScore().ToString();
             lblTotalRounds.Text = "Total de rounds: " + gameMatch.getRounds();
@@ -145,7 +138,6 @@ namespace JogoDaTabuada {
             pnlFinish.Visible = true;
         }
 
-        // Procedimento de limpar os campos dos Objetos gameMatch, player_1 e player_pc
         private void startGameData() {
             gameMatch.setCountdown(0);
             gameMatch.setFactor1(0);
@@ -158,7 +150,6 @@ namespace JogoDaTabuada {
             player_pc.setScore(0);
         }
 
-        // Função de alterar o tempo de acordo com a dificuldade
         private int changeTimer(string d) {
             int timer;
             if (d == "Fácil")
@@ -170,30 +161,27 @@ namespace JogoDaTabuada {
             return timer;
         }
         
-        // Função de alterar o mínimo de pulos de acordo com a dificuldade
         private byte changeMinJumps(string d) {
             byte minJumps;
             if (d == "Fácil")
-                minJumps = 2;
-            else if (d == "Moderado")
                 minJumps = 3;
-            else
+            else if (d == "Moderado")
                 minJumps = 4;
+            else
+                minJumps = 5;
             return minJumps;
         }
 
-        // Procedimento para gerar aleatoriamente os dois fatores da multiplicação
         private void generateRandom() {
             Random random = new Random();
             gameMatch.setFactor1(random.Next(1, 10));
             gameMatch.setFactor2(random.Next(1, 10));
         }
 
-        // Procedimento que controla o número de respostas certas para adicionar um pulo
         private void rightAnswController(bool op) {
             if (op == true) {
                 player_1.setRightAnsw(player_1.getRightAnsw() + 1);
-                if (player_1.getRightAnsw() == gameMatch.getMinimalJumps()) {
+                if (player_1.getRightAnsw() == gameMatch.getMinAnsw()) {
                     player_1.setJump(player_1.getJump() + 1);
                     player_1.setRightAnsw(0);
                 }
@@ -202,7 +190,6 @@ namespace JogoDaTabuada {
                 player_1.setRightAnsw(0);
         }
 
-        // Função que controla os pulos
         private bool jumpController() {
             bool hasJump = false;
             if (player_1.getJump() >= 1) {
@@ -212,7 +199,6 @@ namespace JogoDaTabuada {
             return hasJump;
         }
 
-        // Função para verificar o resultado que o jogador digitou
         private bool verifyResult() {
             bool isCorrect = false;
             if (gameMatch.getFactor1() * gameMatch.getFactor2() == player_1.getProduct())
@@ -220,7 +206,6 @@ namespace JogoDaTabuada {
             return isCorrect;
         }
 
-        // Procedimento que chama o método de exibição do painel de pontuação
         private void showScore() {
             if (txtProduct.Text == "")
                 MessageBox.Show("Digíte o resultado da multiplicação", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -231,29 +216,28 @@ namespace JogoDaTabuada {
             }
         }
 
-        // Método do temporizador regressivo
+        private void backMenu() {
+            this.Close();
+        }
+
         private void timer1_Tick(object sender, EventArgs e) {
             gameMatch.setCountdown(gameMatch.getCountdown() - 1);
             if (gameMatch.getCountdown() == 0) {
-                timer1.Stop();
+                timer1.Enabled = false;
                 pnlScoreFocus('t');
             }
             lblTimer.Text = "Tempo: " + gameMatch.getCountdown() + " segundos";
         }
 
-        // Evento de clicar no lblStartRound e lblContinue
         private void round_Click(object sender, EventArgs e) {
             pnlGameFocus();
             timer1.Enabled = true;
-            timer1.Start();
         }
 
-        // Evento de clicar no lblVerify
         private void lblVerify_Click(object sender, EventArgs e) {
             showScore();
         }
 
-        // Evento de clicar no lblJump
         private void lblJump_Click(object sender, EventArgs e) {
             if (jumpController())
                 pnlGameFocus();
@@ -261,26 +245,20 @@ namespace JogoDaTabuada {
                 MessageBox.Show("Você não possui pulos suficientes", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
-        // Evento de clicar no lblFinishMatch
         private void lblFinishMatch_Click(object sender, EventArgs e) {
             DialogResult d = MessageBox.Show("Você tem certeza desta ação?", "Encerrar a partida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (d.ToString() == "Yes")
                 pnlFinishFocus();
         }
 
-        // Evento de clicar no lblNewMatch
         private void lblNewMatch_Click(object sender, EventArgs e) {
             pnlReadyFocus();
         }
 
-        // Evento de clicar no lblBackMenu e lblBackMenu1
-        private void backMenu_Click(object sender, EventArgs e) {
-            FormMenu menu = new FormMenu();
-            menu.Show();
-            this.Close();
+        private void back_Click(object sender, EventArgs e) {
+            backMenu();
         }
 
-        // Evento de pressionar tecla Enter e bloquear caracteres diferentes de dígitos no txtProduct
         private void verifyWithEnter(object sender, KeyPressEventArgs e) {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != 13))
                 e.Handled = true;
@@ -288,34 +266,31 @@ namespace JogoDaTabuada {
                 showScore();
         }
 
-        // Evento de mover o cursor dos Labels clicaveis para alterar a cor para Azul-Aqua/Vermelho
         private void lblAquaRed_MouseMove(object sender, MouseEventArgs e) {
             Label someLabel = sender as Label;
             if (someLabel != null) {
-                if (someLabel.Name == "lblFinish" || someLabel.Name == "lblBackMenu" || someLabel.Name == "lblBackMenu1" || someLabel.Name == "lblFinishMatch")
+                if (someLabel.Name == "lblFinish" || someLabel.Name == "lblBack" || someLabel.Name == "lblBack1" || someLabel.Name == "lblFinishMatch")
                     someLabel.ForeColor = System.Drawing.Color.Red;
                 else
                     someLabel.ForeColor = System.Drawing.Color.Aqua;
             }
         }
 
-        // Evento de tirar o cursor dos Labels clicaveis para alterar a cor para Branco
         private void lblWhite_MouseLeave(object sender, EventArgs e) {
             Label someLabel = sender as Label;
             if (someLabel != null)
                 someLabel.ForeColor = System.Drawing.Color.White;
         }
 
-        /*protected override void OnFormClosing(FormClosingEventArgs e) {
+        protected override void OnFormClosing(FormClosingEventArgs e) {
             DialogResult res = System.Windows.Forms.MessageBox.Show("Deseja sair da partida?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res.ToString() == "Yes") {
-                MessageBox.Show("O ganhador foi: " + "\n Placar: ", "Ganhador", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-                frmMenu menu = new frmMenu();
+                e.Cancel = false;
+                FormMenu menu = new FormMenu();
                 menu.Show();
             }
             else
                 e.Cancel = true;
-        }*/
+        }
     }
 }

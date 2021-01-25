@@ -29,8 +29,8 @@
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlHTP = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblBack = new System.Windows.Forms.Label();
+            this.txtRules = new System.Windows.Forms.TextBox();
             this.pnlDifficulty = new System.Windows.Forms.Panel();
             this.lblStartGame = new System.Windows.Forms.Label();
             this.lblBack2 = new System.Windows.Forms.Label();
@@ -98,34 +98,12 @@
             // pnlHTP
             // 
             this.pnlHTP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlHTP.Controls.Add(this.textBox1);
             this.pnlHTP.Controls.Add(this.lblBack);
+            this.pnlHTP.Controls.Add(this.txtRules);
             this.pnlHTP.Location = new System.Drawing.Point(2, 2);
             this.pnlHTP.Name = "pnlHTP";
             this.pnlHTP.Size = new System.Drawing.Size(318, 474);
             this.pnlHTP.TabIndex = 6;
-            // 
-            // textBox1
-            // 
-            this.textBox1.AllowDrop = true;
-            this.textBox1.BackColor = System.Drawing.Color.SeaGreen;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox1.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textBox1.Location = new System.Drawing.Point(3, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.ShortcutsEnabled = false;
-            this.textBox1.Size = new System.Drawing.Size(312, 390);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.WordWrap = false;
             // 
             // lblBack
             // 
@@ -142,6 +120,29 @@
             this.lblBack.Click += new System.EventHandler(this.lblBack_Click);
             this.lblBack.MouseLeave += new System.EventHandler(this.lblMouseLeave);
             this.lblBack.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblMouseMove);
+            // 
+            // txtRules
+            // 
+            this.txtRules.AllowDrop = true;
+            this.txtRules.BackColor = System.Drawing.Color.SeaGreen;
+            this.txtRules.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtRules.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtRules.Enabled = false;
+            this.txtRules.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRules.ForeColor = System.Drawing.Color.White;
+            this.txtRules.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtRules.Location = new System.Drawing.Point(3, 12);
+            this.txtRules.Multiline = true;
+            this.txtRules.Name = "txtRules";
+            this.txtRules.ReadOnly = true;
+            this.txtRules.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtRules.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtRules.ShortcutsEnabled = false;
+            this.txtRules.Size = new System.Drawing.Size(312, 390);
+            this.txtRules.TabIndex = 4;
+            this.txtRules.Text = resources.GetString("txtRules.Text");
+            this.txtRules.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRules.WordWrap = false;
             // 
             // pnlDifficulty
             // 
@@ -295,7 +296,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblBack2;
         private System.Windows.Forms.Label lblStartGame;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtRules;
     }
 }
 

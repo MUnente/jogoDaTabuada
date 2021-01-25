@@ -14,28 +14,26 @@ namespace JogoDaTabuada {
             InitializeComponent();
         }
 
-        // Evento para exibir o painel de dificuldade
         private void lblPlay_Click(object sender, EventArgs e) {
             pnlMenu.Visible = false;
             pnlHTP.Visible = false;
             pnlDifficulty.Visible = true;
         }
 
-        // Evento para exibir o painel de como jogar
         private void lblHowToPlay_Click(object sender, EventArgs e) {
             pnlMenu.Visible = false;
             pnlDifficulty.Visible = false;
             pnlHTP.Visible = true;
+            txtRules.Enabled = true;
+            txtRules.SelectionLength = 0;
         }
 
-        // Evento para voltar ao menu principal
         private void lblBack_Click(object sender, EventArgs e) {
             pnlHTP.Visible = false;
             pnlDifficulty.Visible = false;
             pnlMenu.Visible = true;
         }
 
-        // Evento para inciar o form do jogo
         private void lblStartGame_Click(object sender, EventArgs e) {
             if (rdbEasy.Checked == false && rdbMedium.Checked == false && rdbHard.Checked == false)
                 MessageBox.Show("Por favor, amigão, selecione um dos níveis de dificuldade para começar a partida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -48,32 +46,34 @@ namespace JogoDaTabuada {
                 else
                     difficulty = "Difícil";
                 FormGame frmGame = new FormGame(difficulty);
-                frmGame.Show();
                 this.Hide();
+                frmGame.Show();
             }
         }
 
-        // Evento de mover o cursor dos Labels clicaveis para alterar a cor para Azul-Aqua
         private void lblMouseMove(object sender, MouseEventArgs e) {
             Label someLabel = sender as Label;
             if (someLabel != null)
                 someLabel.ForeColor = System.Drawing.Color.Aqua;
         }
 
-        // Evento de tirar o cursor dos Labels clicaveis para alterar a cor para Branco
         private void lblMouseLeave(object sender, EventArgs e) {
             Label someLabel = sender as Label;
             if (someLabel != null)
                 someLabel.ForeColor = System.Drawing.Color.White;
         }
 
-        // Método para sair do game quando clicar no X
         protected override void OnFormClosing(FormClosingEventArgs e) {
-            DialogResult res = MessageBox.Show("Deseja realmente sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (res.ToString() == "Yes")
-                Application.Exit();
-            else
+            if (e.CloseReason == CloseReason.UserClosing) {
+                DialogResult res = MessageBox.Show("Deseja realmente sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res.ToString() == "Yes")
+                    Environment.Exit(0);
+                else
+                    e.Cancel = true;
+            }
+            else {
                 e.Cancel = true;
+            }
         }
     }
 }

@@ -53,14 +53,14 @@
             this.lblWinner = new System.Windows.Forms.Label();
             this.lblScoreMachine1 = new System.Windows.Forms.Label();
             this.lblScorePlayer1 = new System.Windows.Forms.Label();
-            this.lblBackMenu1 = new System.Windows.Forms.Label();
+            this.lblBack1 = new System.Windows.Forms.Label();
             this.lblNewMatch = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.pnlReady = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblBackMenu = new System.Windows.Forms.Label();
+            this.lblBack = new System.Windows.Forms.Label();
             this.lblStartRound = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlGame.SuspendLayout();
@@ -381,7 +381,7 @@
             this.pnlFinish.Controls.Add(this.lblWinner);
             this.pnlFinish.Controls.Add(this.lblScoreMachine1);
             this.pnlFinish.Controls.Add(this.lblScorePlayer1);
-            this.pnlFinish.Controls.Add(this.lblBackMenu1);
+            this.pnlFinish.Controls.Add(this.lblBack1);
             this.pnlFinish.Controls.Add(this.lblNewMatch);
             this.pnlFinish.Controls.Add(this.label14);
             this.pnlFinish.Controls.Add(this.label15);
@@ -441,20 +441,20 @@
             this.lblScorePlayer1.Text = "0";
             this.lblScorePlayer1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblBackMenu1
+            // lblBack1
             // 
-            this.lblBackMenu1.AutoSize = true;
-            this.lblBackMenu1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblBackMenu1.Font = new System.Drawing.Font("Segoe Print", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBackMenu1.ForeColor = System.Drawing.Color.White;
-            this.lblBackMenu1.Location = new System.Drawing.Point(205, 385);
-            this.lblBackMenu1.Name = "lblBackMenu1";
-            this.lblBackMenu1.Size = new System.Drawing.Size(190, 37);
-            this.lblBackMenu1.TabIndex = 7;
-            this.lblBackMenu1.Text = "Voltar a o menu";
-            this.lblBackMenu1.Click += new System.EventHandler(this.backMenu_Click);
-            this.lblBackMenu1.MouseLeave += new System.EventHandler(this.lblWhite_MouseLeave);
-            this.lblBackMenu1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblAquaRed_MouseMove);
+            this.lblBack1.AutoSize = true;
+            this.lblBack1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblBack1.Font = new System.Drawing.Font("Segoe Print", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBack1.ForeColor = System.Drawing.Color.White;
+            this.lblBack1.Location = new System.Drawing.Point(205, 385);
+            this.lblBack1.Name = "lblBack1";
+            this.lblBack1.Size = new System.Drawing.Size(190, 37);
+            this.lblBack1.TabIndex = 7;
+            this.lblBack1.Text = "Voltar a o menu";
+            this.lblBack1.Click += new System.EventHandler(this.back_Click);
+            this.lblBack1.MouseLeave += new System.EventHandler(this.lblWhite_MouseLeave);
+            this.lblBack1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblAquaRed_MouseMove);
             // 
             // lblNewMatch
             // 
@@ -500,7 +500,7 @@
             this.pnlReady.BackColor = System.Drawing.Color.SeaGreen;
             this.pnlReady.Controls.Add(this.pictureBox2);
             this.pnlReady.Controls.Add(this.label3);
-            this.pnlReady.Controls.Add(this.lblBackMenu);
+            this.pnlReady.Controls.Add(this.lblBack);
             this.pnlReady.Controls.Add(this.lblStartRound);
             this.pnlReady.ForeColor = System.Drawing.SystemColors.Control;
             this.pnlReady.Location = new System.Drawing.Point(30, 26);
@@ -531,20 +531,20 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Você está pronto?";
             // 
-            // lblBackMenu
+            // lblBack
             // 
-            this.lblBackMenu.AutoSize = true;
-            this.lblBackMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblBackMenu.Font = new System.Drawing.Font("Segoe Print", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBackMenu.ForeColor = System.Drawing.Color.White;
-            this.lblBackMenu.Location = new System.Drawing.Point(258, 333);
-            this.lblBackMenu.Name = "lblBackMenu";
-            this.lblBackMenu.Size = new System.Drawing.Size(182, 37);
-            this.lblBackMenu.TabIndex = 7;
-            this.lblBackMenu.Text = "Voltar ao menu";
-            this.lblBackMenu.Click += new System.EventHandler(this.backMenu_Click);
-            this.lblBackMenu.MouseLeave += new System.EventHandler(this.lblWhite_MouseLeave);
-            this.lblBackMenu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblAquaRed_MouseMove);
+            this.lblBack.AutoSize = true;
+            this.lblBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblBack.Font = new System.Drawing.Font("Segoe Print", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBack.ForeColor = System.Drawing.Color.White;
+            this.lblBack.Location = new System.Drawing.Point(258, 333);
+            this.lblBack.Name = "lblBack";
+            this.lblBack.Size = new System.Drawing.Size(182, 37);
+            this.lblBack.TabIndex = 7;
+            this.lblBack.Text = "Voltar ao menu";
+            this.lblBack.Click += new System.EventHandler(this.back_Click);
+            this.lblBack.MouseLeave += new System.EventHandler(this.lblWhite_MouseLeave);
+            this.lblBack.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblAquaRed_MouseMove);
             // 
             // lblStartRound
             // 
@@ -621,7 +621,7 @@
         private System.Windows.Forms.PictureBox picResult;
         private System.Windows.Forms.Panel pnlFinish;
         private System.Windows.Forms.Label lblWinner;
-        private System.Windows.Forms.Label lblBackMenu1;
+        private System.Windows.Forms.Label lblBack1;
         private System.Windows.Forms.Label lblNewMatch;
         private System.Windows.Forms.Label lblScoreMachine1;
         private System.Windows.Forms.Label lblScorePlayer1;
@@ -629,7 +629,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel pnlReady;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblBackMenu;
+        private System.Windows.Forms.Label lblBack;
         private System.Windows.Forms.Label lblStartRound;
         private System.Windows.Forms.Label lblTotalRounds;
         private System.Windows.Forms.Label lblFactor2;

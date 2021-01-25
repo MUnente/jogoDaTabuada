@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace JogoDaTabuada {
-    public class Match {
+    public class GameMatch {
         private string difficulty;
-        private int difficultyTimer;
+        private int diffTimer;
         private int countdown;
-        private byte minimalJumps;
+        private byte minAnsw;
         private int factor1;
         private int factor2;
         private int rounds;
@@ -22,12 +22,12 @@ namespace JogoDaTabuada {
             this.difficulty = difficulty;
         }
 
-        public int getDifficultyTimer() {
-            return difficultyTimer;
+        public int getDiffTimer() {
+            return diffTimer;
         }
 
-        public void setDifficultyTimer(int diffTimer) {
-            this.difficultyTimer = diffTimer;
+        public void setDiffTimer(int diffTimer) {
+            this.diffTimer = diffTimer;
         }
 
         public int getCountdown() {
@@ -38,12 +38,12 @@ namespace JogoDaTabuada {
             this.countdown = countdown;
         }
 
-        public int getMinimalJumps() {
-            return minimalJumps;
+        public int getMinAnsw() {
+            return minAnsw;
         }
 
-        public void setMinimalJumps(byte minimalJumps) {
-            this.minimalJumps = minimalJumps;
+        public void setMinAnsw(byte minAnsw) {
+            this.minAnsw = minAnsw;
         }
 
         public int getFactor1() {
