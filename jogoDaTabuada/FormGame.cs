@@ -207,12 +207,17 @@ namespace JogoDaTabuada {
         }
 
         private void showScore() {
-            if (txtProduct.Text == "")
-                MessageBox.Show("Digíte o resultado da multiplicação", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else {
-                player_1.setProduct(Convert.ToInt32(txtProduct.Text));
-                timer1.Stop();
-                pnlScoreFocus('v');
+            try {
+                if (txtProduct.Text == "")
+                    MessageBox.Show("Digíte o resultado da multiplicação", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else {
+                    player_1.setProduct(Convert.ToInt32(txtProduct.Text));
+                    timer1.Stop();
+                    pnlScoreFocus('v');
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show("" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
